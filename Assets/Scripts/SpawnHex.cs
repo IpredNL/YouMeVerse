@@ -16,6 +16,5 @@ public class SpawnHex : MonoBehaviour
     }
     public void SetMaterial (int matID) {
         gameObject.GetComponent<Renderer>().material = _material[matID];
-       // gameObject.GetComponent<Renderer>().material = _material2[matID];
     }
 }
