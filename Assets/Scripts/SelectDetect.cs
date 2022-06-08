@@ -14,23 +14,12 @@ public class SelectDetect : MonoBehaviour {
     public bool debugThis;
     public int DebugNummer;
     public int KernNummer;
-   // private int DesignNummer;
-    //private int MethodeNummer;
-    //private bool ActiveKern;
-    //private bool ActiveDesign;
-    //private bool ActiveMethode;
     public bool testCopy;
 
     public int NeedThisHex;
 
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
     void Update()
     {
-
-
         if (inTrigger && !_meshRenderer.enabled && !madeCopy) {
             madeCopy = true;
             GameObject[] SpawnLocation;
@@ -39,16 +28,6 @@ public class SelectDetect : MonoBehaviour {
                 if (SpawnPoint.GetComponent<SpawnHexInfo>().SpawnHexNummer == DetectieNummer) {
                     SpawnPoint.GetComponent<SpawnHexInfo>().spawnThisHex(NeedThisHex);
                 }
-                /*if (SpawnPoint.GetComponent<SpawnHexInfo>().SpawnHexNummer == DetectieNummer)
-                    if (SpawnPoint.GetComponent<SpawnHexInfo>().SpawnHexNummer == DetectieNummer) {
-                    if (ActiveKern) {               // Kernwaarde
-                        SpawnPoint.GetComponent<SpawnHexInfo>().spawnNewKernHex(KernNummer);
-                    } else if (ActiveDesign) {      //Design thinking methode
-                        SpawnPoint.GetComponent<SpawnHexInfo>().spawnNewDesignHex(DesignNummer);
-                    } else if (ActiveMethode) {     // Methode kaarten
-                        SpawnPoint.GetComponent<SpawnHexInfo>().spawnNewMethodeHex(MethodeNummer);
-                    }
-                }*/
             }           
         } else if (!inTrigger && _meshRenderer.enabled && madeCopy) {
             GameObject[] SpawnLocation;
@@ -75,8 +54,6 @@ public class SelectDetect : MonoBehaviour {
     public void OnTriggerExit(Collider other) {
         if (other.CompareTag("Hexagon")) {
             inTrigger = false;
-            // KernNummer = 0; MethodeNummer = 0; DesignNummer = 0;
-            //ActiveDesign = false; ActiveKern = false; ActiveMethode = false;
             NeedThisHex = 0;
 
         }
@@ -86,24 +63,7 @@ public class SelectDetect : MonoBehaviour {
         if (other.CompareTag("Hexagon")) {
             int ActiveHexaNummer = other.GetComponent<spawnInfo>().hexIndex;
             NeedThisHex = ActiveHexaNummer;
-            /*
-
-            
-            if (other.GetComponent<HexaInfo>().Kernwaarde) {
-                KernNummer = ActiveHexaNummer - 100;
-                ActiveKern = true;
-                
-            } else
-            //Design thinking methode
-            if (other.GetComponent<HexaInfo>().DesignThinking) {
-                DesignNummer = ActiveHexaNummer - 50;
-                ActiveDesign = true;
-            } else
-            // Methode kaarten
-            if (other.GetComponent<HexaInfo>().Methode) {
-                MethodeNummer = ActiveHexaNummer - 200;
-                ActiveMethode = true;
-            }*/
+ 
         }
     }
 }
